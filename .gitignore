@@ -1,0 +1,10 @@
+node_modules/
+
+SQLite/
+*.sqlite
+*.db
+
+reports/
+*.txt
+
+.env
