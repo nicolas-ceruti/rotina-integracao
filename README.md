@@ -19,7 +19,6 @@ Uma aplicação em Node.js desenvolvida para consumir, processar e persistir dad
 
 ## Como Executar Localmente
 
-
 ```bash
 npm install
 cd src

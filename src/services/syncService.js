@@ -1,7 +1,7 @@
 import { logger } from '../infra/logger/index.js';
 
 export async function processIntegration(userProvider, userRepository) {
-    const report = { totalProcessed: 0, added: 0, updated: 0, ignored: 0, errors: [] };
+    const report = { totalProcessed: [], added: [], updated: [], ignored: [], errors: [] };
     
     let users = [];
     
@@ -20,7 +20,7 @@ export async function processIntegration(userProvider, userRepository) {
 
         if (user.age < 18) {
             logger.error({ user: user }, 'Falha ao salvar usuário. Idade inválida.');
-            report.ignored++;
+            report.ignored.push(user.email);
             continue;  
         }
 
@@ -30,10 +30,10 @@ export async function processIntegration(userProvider, userRepository) {
             // RQ04
             if (existingUser) {
                 await userRepository.update(user);
-                report.updated++;
+                report.updated.push(user.email);
             } else {
                 await userRepository.create(user);
-                report.added++;
+                report.added.push(user.email);
             }
         } catch (error) {
             logger.error({ email: user.email, err: error.message }, 'Erro ao processar usuário');

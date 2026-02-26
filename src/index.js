@@ -2,7 +2,7 @@ import { setupDatabase } from './infra/database/connection.js';
 import { User } from './providers/user.js';
 import { UserRepository } from './repositories/userRepository.js';
 import { processIntegration } from './services/syncService.js';
-import { generateReport } from './infra/reports/report.js';
+import { generateReport } from './infra/report/report.js';
 import { logger } from './infra/logger/index.js';
 
 async function main() {
